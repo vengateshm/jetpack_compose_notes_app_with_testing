@@ -61,7 +61,7 @@ fun NoteListScreen(
                 )
                 IconButton(
                     onClick = {
-
+                        viewModel.onEvent(NotesEvent.ToggleSortSection)
                     }) {
                     Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")
                 }
