@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import dev.vengateshm.cleanarchitecturemvvmnotesapp.core.util.TestTags
 import dev.vengateshm.cleanarchitecturemvvmnotesapp.feature_note.domain.model.Note
 import dev.vengateshm.cleanarchitecturemvvmnotesapp.feature_note.presentation.add_edit_note.components.TransparentHintTextField
 import kotlinx.coroutines.flow.collectLatest
@@ -128,7 +129,9 @@ fun AddEditNoteScreen(
                 },
                 onFocusChange = {
                     viewModel.onEvent(AddEditNoteEvent.ChangeTitleFocus(it))
-                })
+                },
+                testTag = TestTags.TITLE_TEXT_FIELD
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -145,7 +148,9 @@ fun AddEditNoteScreen(
                 },
                 onFocusChange = {
                     viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it))
-                })
+                },
+                testTag = TestTags.CONTENT_TEXT_FIELD
+            )
         }
     }
 }

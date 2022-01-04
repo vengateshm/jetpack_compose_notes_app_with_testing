@@ -13,9 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import dev.vengateshm.cleanarchitecturemvvmnotesapp.core.util.TestTags
 import dev.vengateshm.cleanarchitecturemvvmnotesapp.feature_note.presentation.note_list.components.NoteItem
 import dev.vengateshm.cleanarchitecturemvvmnotesapp.feature_note.presentation.note_list.components.SortSection
 import dev.vengateshm.cleanarchitecturemvvmnotesapp.feature_note.presentation.util.Screen
@@ -76,7 +78,8 @@ fun NoteListScreen(
                 SortSection(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp),
+                        .padding(vertical = 16.dp)
+                        .testTag(TestTags.ORDER_SECTION), // Better to have content description or text as it does not have production use
                     noteSort = noteListState.noteSort,
                     onSortChange = {
                         viewModel.onEvent(NotesEvent.SortNote(it))

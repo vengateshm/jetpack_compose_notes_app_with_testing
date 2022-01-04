@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import dev.vengateshm.cleanarchitecturemvvmnotesapp.core.util.TestTags
 import dev.vengateshm.cleanarchitecturemvvmnotesapp.feature_note.domain.model.Note
 
 @Composable
@@ -24,10 +26,12 @@ fun NoteItem(
     onDeleteClicked: () -> Unit
 ) {
     Box(
-        modifier = modifier.background(
-            color = Color(note.color),
-            shape = RoundedCornerShape(8.dp)
-        )
+        modifier = modifier
+            .background(
+                color = Color(note.color),
+                shape = RoundedCornerShape(8.dp)
+            )
+            .testTag(TestTags.NOTE_ITEM)
     ) {
         Column(
             modifier = Modifier
