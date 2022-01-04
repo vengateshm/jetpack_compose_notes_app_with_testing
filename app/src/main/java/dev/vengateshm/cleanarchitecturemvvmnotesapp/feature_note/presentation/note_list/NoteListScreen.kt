@@ -87,14 +87,17 @@ fun NoteListScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             // Note List
-            LazyColumn() {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(noteListState.noteList) { note ->
                     NoteItem(
                         note = note,
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                navController.navigate(Screen.AddEditNote.route + "")
+                                navController.navigate(
+                                    Screen.AddEditNote.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClicked = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
@@ -108,6 +111,7 @@ fun NoteListScreen(
                                 }
                             }
                         })
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
         }
